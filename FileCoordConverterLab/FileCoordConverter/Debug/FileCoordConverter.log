@@ -1,0 +1,3 @@
+﻿  Convert.cpp
+F:\C++\FileCoordConverterLab\FileCoordConverter\Convert.cpp(104,6): warning C4101: 'commaLoc2': unreferenced local variable
+  FileCoordConverter.vcxproj -> F:\C++\FileCoordConverterLab\Debug\FileCoordConverter.exe
