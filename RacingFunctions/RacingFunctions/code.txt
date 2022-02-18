@@ -1,0 +1,228 @@
+// Project4.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <conio.h>
+#include <ctime>
+#include <ostream>
+
+using namespace std;
+
+void printGameHeader();
+string getName(string playerOne, string playerTwo, string playerThree);
+void printChartHeader(string playerOne, string playerTwo, string playerThree);
+int printTurn(string);
+int rollDice();
+int movePlayer(int);
+void printMove(int, bool, int);
+
+int main()
+{
+	string playerOne;
+	string playerTwo;
+	string playerThree;
+	int positionOne = 1;
+	int positionTwo = 1;
+	int positionThree = 1;
+
+	srand((unsigned)time(0));
+
+	printGameHeader();
+	/*getName(playerOne, playerTwo, playerThree);
+	printChartHeader(playerOne, playerTwo, playerThree);
+	printTurn(playerOne);
+	rollDice();
+	movePlayer(rollDice());
+	checkTraps(movePlayer(printTurn(playerOne)));
+	printMove(rollDice(), checkTraps(movePlayer(printTurn(playerOne))), movePlayer(printTurn(playerOne))); */
+
+}
+
+void printGameHeader()
+{
+	cout << "+" << setfill('-') << setw(36) << "+" << endl;
+	cout << "|" << setfill(' ') << setw(36) << "|" << endl;
+	cout << "|" << setw(23) << "Welcome to" << setw(13) << "|" << endl;
+	cout << "|" << setw(36) << "|" << endl;
+	cout << "|" << setw(30) << "Trap Doors & Trampolines" << setw(6) << "|" << endl;
+	cout << "+" << setfill('-') << setw(36) << "+" << endl;
+	cout << "|" << setfill(' ') << setw(36) << "|" << endl;
+	cout << "|" << setw(13) << "Trap Doors" << setw(20) << "Trampolines" << setw(3) << "|" << endl;
+	cout << "|" << setw(13) << "----------" << setw(21) << "-------------" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "9" << setw(4) << "-> " << setw(3) << "2" << setw(9) << "3" << setw(7) << "-> " << " 59" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "22" << setw(4) << "-> " << setw(3) << "8" << setw(9) << "16" << setw(7) << "-> " << " 32" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "30" << setw(6) << " -> " " 14" << setw(9) << "33" << setw(7) << "-> " << " 54" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "51" << setw(6) << " -> " " 12" << setw(9) << "35" << setw(7) << "-> " << " 41" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "60" << setw(6) << " -> " " 42" << setw(9) << "56" << setw(7) << "-> " << " 78" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "88" << setw(6) << " -> " " 61" << setw(9) << "66" << setw(7) << "-> " << " 92" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "116" << setw(6) << " -> " " 86" << setw(9) << "96" << setw(7) << "-> " << "105" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "128" << setw(7) << "-> " "108" << setw(9) << "109" << setw(7) << "-> " << "140" << setw(2) << "|" << endl;
+	cout << "|" << setw(8) << "135" << setw(7) << "-> " "100" << setw(9) << "124" << setw(7) << "-> " << "134" << setw(2) << "|" << endl;
+	cout << "+" << setfill('-') << setw(36) << "+" << endl;
+	cout << setfill(' ') << endl;
+}
+string getName(string playerOne, string playerTwo, string playerThree)
+{
+	cout << "Enter Player 1 Name: " << endl;
+	cin >> playerOne;
+	cout << "Enter Player 2 Name: " << endl;
+	cin >> playerTwo;
+	cout << "Enter Player 3 Name: " << endl;
+	cin >> playerThree;
+	return playerOne, playerTwo, playerThree;
+}
+void printChartHeader(string playerOne, string playerTwo, string playerThree)
+{
+
+	cout << "Player" << setw(10) << "Turn" << setw(10) << "Old Pos" << setw(30) << "Dice" << setw(10) << "Special" << setw(10) << "New Pos" << endl;
+	cout << setfill('-') << setw(85) << endl;
+	cout << ' ' << endl;
+	cout << setfill(' ') << endl;
+	cout << playerOne << endl;
+	cout << playerTwo << endl;
+	cout << playerThree << endl;
+
+}
+int printTurn(string player)
+{
+	int turn = 1;
+	int oldPos = 1;
+	int dice;
+	string special;
+	int newPos = 0;
+	cout << "Please press the enter button" << endl;
+	cin.ignore();
+	_getch();
+
+	return oldPos;
+}
+int rollDice()
+{
+
+	int HIGH = 6;
+	int LOW = 1;
+	int dieOne = rand() % (HIGH - LOW + 1) + LOW;
+	int dieTwo = rand() % (HIGH - LOW + 1) + LOW;
+
+	int roll = dieOne + dieTwo;
+
+
+	return roll;
+}
+int movePlayer(int oldPos)
+{
+	int newPos = oldPos + rollDice();
+	cout << newPos << endl;
+	return newPos;
+}
+bool checkTraps(int& position)
+{
+
+	bool trapHit = false;
+
+	if (position == 9)
+	{
+		position = 2;
+		trapHit = true;
+	}
+	else if (position == 22)
+	{
+		position = 8;
+		trapHit = true;
+	}
+	else if (position == 30)
+	{
+		position = 14;
+		trapHit = true;
+	}
+	else if (position == 51)
+	{
+		position = 12;
+		trapHit = true;
+	}
+	else if (position == 60)
+	{
+		position = 42;
+		trapHit = true;
+	}
+	else if (position == 88)
+	{
+		position = 61;
+		trapHit = true;
+	}
+	else if (position == 116)
+	{
+		position = 86;
+		trapHit = true;
+	}
+	else if (position == 135)
+	{
+		position = 100;
+		trapHit = true;
+	}
+	return trapHit;
+}
+bool checkTrampolines(int& position)
+{
+	bool trampolineHit = false;
+	if (position == 3)
+	{
+		position = 59;
+		trampolineHit = true;
+	}
+	else if (position == 16)
+	{
+		position = 32;
+		trampolineHit = true;
+	}
+	else if (position == 33)
+	{
+		position = 54;
+		trampolineHit = true;
+	}
+	else if (position == 35)
+	{
+		position = 41;
+		trampolineHit = true;
+	}
+	else if (position == 56)
+	{
+		position = 78;
+		trampolineHit = true;
+	}
+	else if (position == 66)
+	{
+		position = 92;
+		trampolineHit = true;
+	}
+	else if (position == 96)
+	{
+		position = 105;
+		trampolineHit = true;
+	}
+	else if (position == 109)
+	{
+		position = 140;
+		trampolineHit = true;
+	}
+	else if (position == 124)
+	{
+		position = 134;
+		trampolineHit = true;
+	}
+	return trampolineHit;
+}
+/*
+bool noWinner()
+{
+	return true;
+	if (pos)
+}
+*/
+void printMove(int dice, bool special, int newPos)
+{
+	cout << "Dice" << setw(25) << "Special" << setw(30) << "New Pos" << endl;
+	cout << dice << setw(20) << special << setw(20) << newPos << endl;
+}
